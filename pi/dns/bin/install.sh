@@ -15,8 +15,7 @@ CONF_FILE_BACKUP="/etc/resolv.conf.backup"
 
 # Make a backup of the original file
 sudo cp $CONF_FILE $CONF_FILE_BACKUP
-
-sudo sed -i '1inameserver $PRIVATE_IP' $CONF_FILE
+sudo echo "nameserver $PRIVATE_IP" > $CONF_FILE
 
 # healthcheck
 echo "Healthcheck DNS server... (5 seconds)"
