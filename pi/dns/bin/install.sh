@@ -10,18 +10,29 @@ if [ -z "$PRIVATE_IP" ]; then
     exit 1
 fi
 
-CONF_FILE="/etc/resolv.conf"
-CONF_FILE_BACKUP="/etc/resolv.conf.backup"
+CONFIG_FILE="/etc/netplan/60-custom-dns.yaml"
 
-# Make a backup of the original file
-sudo cp $CONF_FILE $CONF_FILE_BACKUP
-sudo echo "nameserver $PRIVATE_IP" > $CONF_FILE
+touch $CONFIG_FILE
+
+cat << EOF | sudo tee "$CONFIG_FILE"
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      nameservers:
+        addresses:
+          - $PRIVATE_IP
+          - 1.1.1.1
+EOF
+
+sudo netplan apply
 
 # healthcheck
 echo "Healthcheck DNS server... (5 seconds)"
 sleep 5
 
-DNS_RECORD_TEST="pi.home.sidevision.io"
+DNS_RECORD_TEST="system.troy.bireme.io"
 
 if host "$DNS_RECORD_TEST" > /dev/null; then
     echo "DNS server have been successfully installed."

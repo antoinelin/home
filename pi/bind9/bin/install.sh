@@ -10,7 +10,16 @@ if [ -z "$PRIVATE_IP" ]; then
     exit 1
 fi
 
-sudo chown root:root ./cache ./logs ./records
+sudo chown superman:superman ./cache ./logs ./records
+
+RESOLVED_CONF_FILE="/etc/systemd/resolved.conf"
+RESOLVED_CONF_FILE_BACKUP="/etc/systemd/resolved.conf.backup"
+
+# Make a backup of the original file
+cp $RESOLVED_CONF_FILE $RESOLVED_CONF_FILE_BACKUP
+
+# Uncomment DNSStubListener and set it to no
+sed -i '/^#DNSStubListener=/c\DNSStubListener=no' $RESOLVED_CONF_FILE
 
 docker compose up -d
 
