@@ -5,7 +5,9 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 cd $DIR
 cd ..
 
-rm -f /etc/netplan/60-custom-dns.yaml
-sudo netplan apply
+CONF_FILE="/etc/resolv.conf"
+CONF_FILE_BACKUP="/etc/resolv.conf.backup"
+
+sudo mv $CONF_FILE_BACKUP $CONF_FILE
 
 echo "DNS nameservers have been successfully updated."
