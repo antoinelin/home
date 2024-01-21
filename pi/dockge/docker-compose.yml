@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  dockge:
+    image: louislam/dockge:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/app/data
+      - /root/home/pi:/root/home/pi
+    environment:
+      - DOCKGE_STACKS_DIR=/root/home/pi
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dockge.rule=Host(`dockge2.home.sidevision.io`)
+      - traefik.http.routers.dockge.entrypoints=websecure
+      - traefik.http.routers.dockge.tls=true
+      - traefik.http.routers.dockge.tls.certresolver=cloudflare
+      - traefik.http.routers.dockge.service=dockge
+      - traefik.http.services.dockge.loadbalancer.server.port=5001
+      - traefik.http.services.dockge.loadbalancer.server.scheme=http

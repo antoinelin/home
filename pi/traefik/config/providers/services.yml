@@ -1,0 +1,10 @@
+http:
+  services:
+    node-exporter:
+      loadBalancer:
+        servers:
+          - url: http://{{ env "PRIVATE_IP" }}:9100/metrics
+    bind9-exporter:
+      loadBalancer:
+        servers:
+          - url: http://{{ env "PRIVATE_IP" }}:9119/metrics

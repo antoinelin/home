@@ -1,0 +1,63 @@
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
+
+api:
+  dashboard: true
+  insecure: false
+  # debug: true
+
+log:
+  level: "INFO"
+  format: "json"
+
+# Enable healthcheck using Traefik CLI
+ping: {}
+
+entryPoints:
+  web:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: :443
+
+accessLog:
+  format: "json"
+
+certificatesResolvers:
+  cloudflare:
+    acme:
+      email: "it@sidevision.io"
+      storage: "/etc/traefik/acme.json"
+      caServer: "https://acme-v02.api.letsencrypt.org/directory"
+      # caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
+      keyType: EC256
+      dnsChallenge:
+        provider: "cloudflare"
+        resolvers:
+          - "1.1.1.1:53"
+          - "8.8.8.8:53"
+
+# Server transport refers to how Traefik communicates with downstream servers (e.g., the backend services or web servers to which Traefik forwards requests).
+# serversTransport:
+  # When set to true, this parameter instructs Traefik not to verify the SSL/TLS certificate presented by the downstream server. In simpler terms, it disables SSL verification for connections between Traefik and backend servers.
+  # insecureSkipVerify: true
+
+providers:
+  docker:
+    network: "traefik"
+    exposedByDefault: false
+    endpoint: 'unix:///var/run/docker.sock'
+    watch: true
+    swarmMode: false
+  file:
+    directory: "/etc/traefik/providers/"
+    watch: true
+
+metrics:
+  prometheus: 
+    manualRouting: true

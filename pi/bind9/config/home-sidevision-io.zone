@@ -1,0 +1,23 @@
+$TTL 2d
+
+$ORIGIN home.sidevision.io
+
+@               IN      SOA     ns.home.sidevision.io. it.sidevision.io. ( ;
+                                2024012100      ; serial
+                                12h             ; refresh
+                                15m             ; retry
+                                3w              ; expire
+                                2h              ; minimum ttl
+                                )
+
+                IN      NS      ns.home.sidevision.io.
+ns              IN      A       10.2.0.3
+
+; -- add records below
+
+@               IN      A       10.2.0.2
+dockge          IN      A       10.2.0.2
+dockge2         IN      A       10.2.0.3
+pi              IN      A       10.2.0.3
+dns             IN      A       10.2.0.3
+unifi           IN      A       10.1.0.1

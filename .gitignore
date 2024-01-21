@@ -128,3 +128,31 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Ignore sensitive information
+secrets.yml
+secrets.json
+*.pem
+*.key
+*.cert
+acme.json
+
+# Ignore editor-specific files
+*.sublime-project
+*.sublime-workspace
+*.idea/
+
+# Ignore operating system files
+.DS_Store
+Thumbs.db
+
+# Ignore backup files
+*~
+*.bak
+*.backup
+
+# Ignore node_exporter tarball
+*.tar.gz
+
+# Ignore extracted node_exporter directory
+node_exporter-*/

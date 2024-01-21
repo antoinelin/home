@@ -1,0 +1,31 @@
+http:
+  middlewares:
+    security:
+      headers:
+        # Preventing app from being embedded in an iframe on other sites, which can help mitigate clickjacking attacks.
+        FrameDeny: true
+        # Specifies the Access-Control-Max-Age header, defining the maximum age in seconds for the result of a preflight request to be cached. This is related to CORS (Cross-Origin Resource Sharing).
+        AccessControlMaxAge: 100
+        # Adds the Vary header, which instructs caches to store multiple versions of the response based on the header value, useful for content negotiation.
+        AddVaryHeader: true
+        # Enables the browser's built-in cross-site scripting (XSS) filter, setting the X-XSS-Protection header to prevent reflected XSS attacks.
+        BrowserXssFilter: true
+        # Sets the X-Content-Type-Options header to nosniff, instructing the browser to strictly follow the MIME types declared in the Content-Type headers.
+        ContentTypeNosniff: true
+        # Forces the inclusion of the Strict-Transport-Security (HSTS) header, instructing browsers to only access the site using HTTPS.
+        ForceSTSHeader: true
+        # Expands the HSTS policy to all subdomains of the host.
+        STSIncludeSubdomains: true
+        # Indicates that the site can be added to browsers' HSTS preload lists, ensuring HSTS is enforced even on the first visit.
+        STSPreload: true
+        # Sets the X-Frame-Options header to SAMEORIGIN, allowing iframes from the same origin.
+        CustomFrameOptionsValue: SAMEORIGIN
+        # Sets the Referrer-Policy header, controlling the amount of referrer information sent with requests. This can help mitigate cross-site request forgery (CSRF) attacks.
+        ReferrerPolicy: same-origin
+        # Implements the Permissions-Policy header (formerly Feature-Policy), allowing specified browser features (like vibration) only for the current site.
+        PermissionsPolicy: vibrate 'self'
+        # Specifies the duration (in seconds) for the HSTS policy; here, it's set to approximately 10 years.
+        STSSeconds: 315360000
+        customRequestHeaders:
+          # Adds a custom header to indicate the protocol used in the original request, commonly used in scenarios where TLS termination occurs before traffic reaches the web server.
+          X-Forwarded-Proto: "https"

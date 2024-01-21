@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  bind9:
+    container_name: bind9
+    image: ubuntu/bind9:latest
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - BIND9_USER=root
+      - TZ=Europe/Paris
+    volumes:
+      - ./config:/etc/bind
+      - ./cache:/var/cache/bind
+      - ./records:/var/lib/bind
+      - ./logs:/var/log/bind
+
+  bind9_exporter:
+    container_name: bind9_exporter
+    image: prometheuscommunity/bind-exporter:latest
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      - bind9
+    command: --bind.stats-url=http://127.0.0.1:8053
+    labels:
+      - service.name=bind9_exporter
