@@ -11,7 +11,6 @@ cd ..
 
 # Add Docker's official GPG key:
 sudo apt update
-sudo apt upgrade
 sudo apt install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -31,5 +30,4 @@ sudo systemctl enable docker
 # Add user to docker group
 sudo usermod -aG docker $USER
 
-shutdown --reboot 1 "System rebooting in 1 minute"
-sleep 90
+echo "Docker has been installed. You need to reboot the Pi to complete the installation."
