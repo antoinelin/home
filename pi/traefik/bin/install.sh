@@ -20,6 +20,9 @@ if [ -z "$PRIVATE_IP" ]; then
     exit 1
 fi
 
+echo "Creating traefik network..."
+docker network create traefik -d bridge
+
 echo "Creating traefik container..."
 docker compose up -d
 
