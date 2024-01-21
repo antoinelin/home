@@ -14,11 +14,11 @@ fi
 
 # Download and uncompress node_exporter
 echo "Downloading and uncompressing node_exporter..."
-wget "https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz"
-tar xvfz "node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz"
+wget "https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz"
+tar xvfz "node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz"
 
 # Move the binary to /bin
-mv ./node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64/node_exporter /bin/prometheus-node-exporter
+mv ./node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7/node_exporter /bin/prometheus-node-exporter
 
 # Create systemd service file
 echo "Creating systemd service file..."
@@ -47,7 +47,7 @@ systemctl start prometheus-node-exporter
 systemctl enable prometheus-node-exporter
 
 # Remove downloaded files
-rm -rf ./node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64.tar.gz ./node_exporter-${NODE_EXPORTER_VERSION}.linux-amd64
+rm -rf ./node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz ./node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7
 
 # healthcheck
 echo "Healthcheck node-exporter... (5 seconds)"
