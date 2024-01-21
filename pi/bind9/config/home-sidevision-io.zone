@@ -15,6 +15,7 @@ ns              IN      A       10.2.0.3
 
 @               IN      A       10.2.0.2
 drive           IN      A       10.2.0.2
+nas             IN      A       10.2.0.2
 file            IN      A       10.2.0.2
 dockge          IN      A       10.2.0.2
 dockge2         IN      A       10.2.0.3
