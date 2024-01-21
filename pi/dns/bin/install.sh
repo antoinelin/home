@@ -14,7 +14,7 @@ CONF_FILE="/etc/resolv.conf"
 CONF_FILE_BACKUP="/etc/resolv.conf.backup"
 
 # Make a backup of the original file
-sudo cp $RESOLVED_CONF_FILE $RESOLVED_CONF_FILE_BACKUP
+sudo cp $CONF_FILE $CONF_FILE_BACKUP
 
 sudo echo "nameserver $PRIVATE_IP" >> $CONF_FILE
 
