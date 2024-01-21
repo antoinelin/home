@@ -32,7 +32,7 @@ sudo netplan apply
 echo "Healthcheck DNS server... (5 seconds)"
 sleep 5
 
-DNS_RECORD_TEST="system.troy.bireme.io"
+DNS_RECORD_TEST="home.sidevision.io"
 
 if host "$DNS_RECORD_TEST" > /dev/null; then
     echo "DNS server have been successfully installed."
