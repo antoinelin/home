@@ -22,7 +22,7 @@ http:
         certResolver: cloudflare
 
     bind9-exporter:
-      service: bind9_exporter
+      service: bind9-exporter
       rule: Host(`dns.home.sidevision.io`) && Path(`/metrics`)
       entrypoints: websecure
       tls:
