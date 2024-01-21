@@ -23,5 +23,3 @@ services:
     depends_on:
       - bind9
     command: --bind.stats-url=http://127.0.0.1:8053
-    labels:
-      - service.name=bind9_exporter

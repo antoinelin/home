@@ -19,8 +19,13 @@ network:
   version: 2
   renderer: networkd
   ethernets:
-    eth0:
+    enp1s0:
+      dhcp4: true
+      dhcp4-overrides:
+        use-dns: no
       nameservers:
+        search:
+          - home.sidevision.io
         addresses:
           - $PRIVATE_IP
           - 1.1.1.1
