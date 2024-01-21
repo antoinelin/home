@@ -13,19 +13,10 @@ fi
 CONF_FILE="/etc/resolv.conf"
 CONF_FILE_BACKUP="/etc/resolv.conf.backup"
 
-cat << EOF | sudo tee "$CONFIG_FILE"
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    eth0:
-      nameservers:
-        addresses:
-          - $PRIVATE_IP
-          - 1.1.1.1
-EOF
+# Make a backup of the original file
+sudo cp $RESOLVED_CONF_FILE $RESOLVED_CONF_FILE_BACKUP
 
-echo "nameserver $PRIVATE_IP" >> $CONF_FILE
+sudo echo "nameserver $PRIVATE_IP" >> $CONF_FILE
 
 # healthcheck
 echo "Healthcheck DNS server... (5 seconds)"
