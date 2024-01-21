@@ -1,7 +1,5 @@
 $TTL 2d
 
-$ORIGIN home.sidevision.io
-
 @               IN      SOA     ns.home.sidevision.io. it.sidevision.io. ( ;
                                 2024012100      ; serial
                                 12h             ; refresh
