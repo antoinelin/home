@@ -24,11 +24,10 @@ network:
       dhcp4-overrides:
         use-dns: no
       nameservers:
-        search:
-          - home.sidevision.io
         addresses:
           - $PRIVATE_IP
-          - 1.1.1.1
+          - 45.90.28.137
+          - 45.90.30.137
 EOF
 
 sudo netplan apply
