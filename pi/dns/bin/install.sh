@@ -10,9 +10,8 @@ if [ -z "$PRIVATE_IP" ]; then
     exit 1
 fi
 
-CONFIG_FILE="/etc/netplan/60-custom-dns.yaml"
-
-touch $CONFIG_FILE
+CONF_FILE="/etc/resolv.conf"
+CONF_FILE_BACKUP="/etc/resolv.conf.backup"
 
 cat << EOF | sudo tee "$CONFIG_FILE"
 network:
@@ -26,7 +25,7 @@ network:
           - 1.1.1.1
 EOF
 
-sudo netplan apply
+echo "nameserver $PRIVATE_IP" >> $CONF_FILE
 
 # healthcheck
 echo "Healthcheck DNS server... (5 seconds)"
