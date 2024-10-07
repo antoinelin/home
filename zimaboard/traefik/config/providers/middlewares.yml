@@ -29,7 +29,3 @@ http:
         customRequestHeaders:
           # Adds a custom header to indicate the protocol used in the original request, commonly used in scenarios where TLS termination occurs before traffic reaches the web server.
           X-Forwarded-Proto: "https"
-    websocket:
-      headers:
-        Connection: Upgrade
-        Upgrade: websocket
