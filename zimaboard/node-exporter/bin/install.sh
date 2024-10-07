@@ -52,7 +52,7 @@ rm -rf ./node_exporter-${NODE_EXPORTER_VERSION}.darwin-amd64.tar.gz ./node_expor
 # healthcheck
 echo "Healthcheck node-exporter... (5 seconds)"
 sleep 5
-wget --no-verbose --tries=1 --spider http://$PRIVATE_IP:9100/ready || exit 1
+sudo wget --no-verbose --tries=1 --spider http://$PRIVATE_IP:9100/ready || exit 1
 
 # Display the status of the service
 echo "Prometheus node_exporter service installed and started successfully."
