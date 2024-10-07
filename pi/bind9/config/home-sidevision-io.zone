@@ -13,7 +13,7 @@ ns              IN      A       10.2.0.3
 
 ; -- add records below
 
-@               IN      A       10.2.0.2
+@               IN      A       10.2.0.4
 drive           IN      A       10.2.0.2
 nas             IN      A       10.2.0.2
 file            IN      A       10.2.0.2
