@@ -1,9 +1,5 @@
 version: "3.8"
 
-networks:
-  traefik:
-    external: true # We created Traefik network using install.sh before to avoid it to be prefixed by the compose directory name
-
 volumes:
   traefik_letsencrypt:
     driver: local
@@ -13,8 +9,7 @@ services:
   traefik:
     container_name: traefik
     image: traefik:v3.1.5
-    networks:
-      - traefik
+    network_mode: host
     healthcheck:
       test: [ "CMD-SHELL", "traefik healthcheck || exit 1" ]
       interval: 10s
