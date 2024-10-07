@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "$0" )" && pwd )"
 cd $DIR
 cd ..
 
-NODE_EXPORTER_VERSION=1.7.0
+NODE_EXPORTER_VERSION=1.8.2
 
 if [ -z "$PRIVATE_IP" ]; then
     echo "PRIVATE_IP is not set."
@@ -14,11 +14,11 @@ fi
 
 # Download and uncompress node_exporter
 echo "Downloading and uncompressing node_exporter..."
-wget "https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz"
-tar xvfz "node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz"
+wget "https://github.com/prometheus/node_exporter/releases/download/v${NODE_EXPORTER_VERSION}/node_exporter-${NODE_EXPORTER_VERSION}.darwin-amd64.tar.gz"
+tar xvfz "node_exporter-${NODE_EXPORTER_VERSION}.darwin-amd64.tar.gz"
 
 # Move the binary to /bin
-mv ./node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7/node_exporter /bin/prometheus-node-exporter
+mv ./node_exporter-${NODE_EXPORTER_VERSION}.darwin-amd64/node_exporter /bin/prometheus-node-exporter
 
 # Create systemd service file
 echo "Creating systemd service file..."
@@ -47,7 +47,7 @@ systemctl start prometheus-node-exporter
 systemctl enable prometheus-node-exporter
 
 # Remove downloaded files
-rm -rf ./node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7.tar.gz ./node_exporter-${NODE_EXPORTER_VERSION}.linux-armv7
+rm -rf ./node_exporter-${NODE_EXPORTER_VERSION}.darwin-amd64.tar.gz ./node_exporter-${NODE_EXPORTER_VERSION}.darwin-amd64
 
 # healthcheck
 echo "Healthcheck node-exporter... (5 seconds)"
