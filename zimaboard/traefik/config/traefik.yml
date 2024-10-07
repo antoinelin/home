@@ -7,8 +7,8 @@ api:
   insecure: false
   # debug: true
 
-# core:
-  # defaultRuleSyntax: v2
+core:
+  defaultRuleSyntax: v2
 
 log:
   level: "INFO"

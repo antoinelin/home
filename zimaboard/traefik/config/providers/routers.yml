@@ -32,5 +32,7 @@ http:
       service: home-assistant
       rule: Host(`home.sidevision.io`)
       entrypoints: websecure
+      middlewares:
+        - websocket
       tls:
         certResolver: cloudflare
