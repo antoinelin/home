@@ -23,6 +23,13 @@ http:
 
     casaos:
       service: casaos
+      rule: Host(`casaos.home.sidevision.io`)
+      entrypoints: websecure
+      tls:
+        certResolver: cloudflare
+
+    home-assistant:
+      service: home-assistant
       rule: Host(`home.sidevision.io`)
       entrypoints: websecure
       tls:

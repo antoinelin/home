@@ -22,3 +22,6 @@ dockge2         IN      A       10.2.0.3
 pi              IN      A       10.2.0.3
 dns             IN      A       10.2.0.3
 unifi           IN      A       10.1.0.1
+casaos          IN      A       10.2.0.4
+prometheus      IN      A       10.2.0.4
+grafana         IN      A       10.2.0.4
