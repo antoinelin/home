@@ -1,0 +1,40 @@
+version: "3.8"
+
+networks:
+  traefik:
+    external: true # We created Traefik network using install.sh before to avoid it to be prefixed by the compose directory name
+
+volumes:
+  traefik_letsencrypt:
+    driver: local
+    name: traefik_letsencrypt
+
+services:
+  traefik:
+    container_name: traefik
+    image: traefik:v3.10
+    networks:
+      - traefik
+    healthcheck:
+      test: [ "CMD-SHELL", "traefik healthcheck || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - CF_API_EMAIL=$CF_API_EMAIL
+      - CF_API_KEY=$CF_API_KEY
+      - PRIVATE_IP=$PRIVATE_IP
+    volumes:
+      - type: volume
+        source: traefik_letsencrypt
+        target: /letsencrypt
+      - type: bind
+        source: ./config
+        target: /etc/traefik
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock

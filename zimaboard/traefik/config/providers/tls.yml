@@ -1,0 +1,17 @@
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
+      # SNI stands for Server Name Indication, which is an extension to the TLS protocol.
+      # This means that clients must specify the hostname they are trying to connect to, allowing Traefik to present the correct certificate for that hostname.
+      # This is particularly useful in multi-hosting environments.
+      sniStrict: true
+      # Elliptic curves are mathematical structures used in cryptography, particularly in public key cryptography. They form the basis for Elliptic Curve Cryptography (ECC), a key approach to secure encryption.
+      curvePreferences:
+        - CurveP521
+        - CurveP384
+      # A cipher suite defines the specific methods used for key exchange, encryption, and message authentication in a secure communication session.
+      cipherSuites:
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+        - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256

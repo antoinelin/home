@@ -1,0 +1,29 @@
+http:
+  routers:
+    dashboard:
+      service: api@internal
+      rule: Host(`home.sidevision.io`) && PathPrefix(`/api`, `/dashboard`)
+      entrypoints: websecure
+      tls:
+        certResolver: cloudflare
+
+    metrics:
+      service: prometheus@internal
+      rule: Host(`home.sidevision.io`) && Path(`/traefik/metrics`)
+      entrypoints: websecure
+      tls:
+        certResolver: cloudflare
+
+    node-exporter:
+      service: node-exporter
+      rule: Host(`home.sidevision.io`) && Path(`/metrics`)
+      entrypoints: websecure
+      tls:
+        certResolver: cloudflare
+
+    casaos:
+      service: casaos
+      rule: Host(`home.sidevision.io`)
+      entrypoints: websecure
+      tls:
+        certResolver: cloudflare
