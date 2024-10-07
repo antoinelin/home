@@ -16,7 +16,7 @@ services:
     networks:
       - traefik
     extra_hosts:
-      - host.docker.internal:172.17.0.1
+      - host.docker.internal:172.18.0.1
     healthcheck:
       test: [ "CMD-SHELL", "traefik healthcheck || exit 1" ]
       interval: 10s
