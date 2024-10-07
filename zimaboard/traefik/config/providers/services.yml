@@ -12,4 +12,3 @@ http:
       loadBalancer:
         servers:
           - url: http://{{ env "PRIVATE_IP" }}:8123
-        passHostHeader: true
