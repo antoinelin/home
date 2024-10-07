@@ -28,11 +28,3 @@ http:
       tls:
         certResolver: cloudflare
 
-    home-assistant:
-      service: home-assistant
-      rule: Host(`home.sidevision.io`)
-      entrypoints:
-        - websecure
-        - web
-      tls:
-        certResolver: cloudflare

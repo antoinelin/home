@@ -12,7 +12,7 @@ volumes:
 services:
   traefik:
     container_name: traefik
-    image: traefik:v2.10
+    image: traefik:v3.1.5
     networks:
       - traefik
     healthcheck:

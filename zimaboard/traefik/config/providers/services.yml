@@ -8,7 +8,3 @@ http:
       loadBalancer:
         servers:
           - url: http://{{ env "PRIVATE_IP" }}:8000
-    home-assistant:
-      loadBalancer:
-        servers:
-          - url: http://{{ env "PRIVATE_IP" }}:8123
