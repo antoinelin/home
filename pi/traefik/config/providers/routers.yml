@@ -36,3 +36,11 @@ http:
         - web
       tls:
         certResolver: cloudflare
+
+    unifi:
+      service: unifi
+      rule: Host(`unifi.home.sidevision.io`)
+      entrypoints:
+        - websecure
+      tls:
+        certResolver: cloudflare
