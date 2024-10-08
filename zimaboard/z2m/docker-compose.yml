@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+    zigbee2mqtt:
+        container_name: z2m
+        image: koenkk/zigbee2mqtt
+        restart: unless-stopped
+        volumes:
+          - /DATA/AppData/$AppID/data:/app/data
+          - /run/udev:/run/udev
+        ports:
+          - $PORT:8080
+        environment:
+          - TZ=$TZ
+        devices:
+          - /dev/serial/by-id/$DEVICE_ID:/dev/ttyACM0

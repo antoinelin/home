@@ -28,3 +28,10 @@ http:
       tls:
         certResolver: cloudflare
 
+    z2m:
+      service: z2m
+      rule: Host(`z2m.home.sidevision.io`)
+      entrypoints: websecure
+      tls:
+        certResolver: cloudflare
+
