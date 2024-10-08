@@ -27,3 +27,4 @@ casaos          IN      A       10.2.0.4
 prometheus      IN      A       10.2.0.4
 grafana         IN      A       10.2.0.4
 z2m             IN      A       10.2.0.4
+mqtt            IN      A       10.2.0.4
