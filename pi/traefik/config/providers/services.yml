@@ -15,8 +15,3 @@ http:
       loadBalancer:
         servers:
           url: http://10.2.0.4:8123
-    unifi:
-      loadBalancer:
-        serversTransport: insecure
-        servers:
-          url: https://10.1.0.1
