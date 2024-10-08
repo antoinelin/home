@@ -1,7 +1,4 @@
 http:
-  serversTransports:
-    insecure:
-      insecureSkipVerify: true
   services:
     node-exporter:
       loadBalancer:
