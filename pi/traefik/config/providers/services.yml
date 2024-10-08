@@ -3,12 +3,12 @@ http:
     node-exporter:
       loadBalancer:
         servers:
-          url: http://{{ env "PRIVATE_IP" }}:9100/metrics
+          - url: http://{{ env "PRIVATE_IP" }}:9100/metrics
     bind9-exporter:
       loadBalancer:
         servers:
-          url: http://{{ env "PRIVATE_IP" }}:9119/metrics
+          - url: http://{{ env "PRIVATE_IP" }}:9119/metrics
     home-assistant:
       loadBalancer:
         servers:
-          url: http://10.2.0.4:8123
+          - url: http://10.2.0.4:8123
