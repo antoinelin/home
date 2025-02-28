@@ -3,12 +3,12 @@ http:
     node-exporter:
       loadBalancer:
         servers:
-          - url: http://{{ env "PRIVATE_IP" }}:9100/metrics
+          - url: http://localhost:9100/metrics
     casaos:
       loadBalancer:
         servers:
-          - url: http://{{ env "PRIVATE_IP" }}:8000
+          - url: http://localhost:8000
     z2m:
       loadBalancer:
         servers:
-          - url: http://{{ env "PRIVATE_IP" }}:8081
+          - url: http://localhost:8081
